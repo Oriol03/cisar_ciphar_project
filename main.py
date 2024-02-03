@@ -10,7 +10,7 @@ def encrypt(msg,number):
             new_text+=alphabet[new_position]
         except IndexError:
             position=alphabet.index(l)+number
-            new_position=position - 59
+            new_position=position % 59
             new_text+=alphabet[new_position]
         
             
@@ -20,10 +20,10 @@ def decrypt (text,number):
     new_text=""
     for l in text:
         try :
-            new_position=alphabet.index(l)-number
+            new_position=alphabet.index(l)-(number%59)
             new_text+=alphabet[new_position]
         except IndexError:
-            position=alphabet.index(l)-number
+            position=alphabet.index(l)-(number%59)
             new_position=position + 59
             new_text+=alphabet[new_position]
     print(f"The decrypted text is {new_text}")
